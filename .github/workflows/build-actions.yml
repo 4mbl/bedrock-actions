@@ -1,0 +1,53 @@
+name: Build Actions and Sync Build Directory
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.6.0'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: ./pr-comment/
+
+      - name: Build action
+        run: pnpm run bundle
+        working-directory: ./pr-comment/
+
+      - name: Commit and Push Changes to Build
+        run: |
+          echo "Committing changes to build directory"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          if [[ $(git status --porcelain .) ]]; then
+          git add .
+          git commit -m "Build actions"
+          git push origin main
+          else
+          echo "No changes, skipping commit."
+          fi
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,15 @@
+name: 'Post PR Comment'
+description: 'Post a comment on a pull request with a link to the uploaded artifact.'
+author: '4MBL'
+
+inputs:
+  artifact-url:
+    description: 'URL of the uploaded artifact'
+    required: true
+  pr-number:
+    description: 'Pull Request number to comment on'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

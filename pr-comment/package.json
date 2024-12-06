@@ -1,0 +1,33 @@
+{
+  "name": "pr-comment",
+  "description": "Post a comment on a pull request with a link to the uploaded artifact.",
+  "version": "0.0.0",
+  "type": "module",
+  "author": "4mbl",
+  "license": "MIT",
+  "private": true,
+  "keywords": [],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "bundle": "pnpm run format:write && pnpm run package",
+    "format:write": "pnpx prettier --write .",
+    "format:check": "pnpx prettier --check .",
+    "lint": "pnpx eslint .",
+    "package": "pnpm ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "package:watch": "pnpm run package -- --watch",
+    "all": "pnpm run format:write && pnpm run lint && pnpm run package"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@vercel/ncc": "^0.38.3",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2"
+  }
+}

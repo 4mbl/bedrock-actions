@@ -1,0 +1,21 @@
+name: 'Bundle Addon'
+description: 'Create a .mcpack or .mcaddon file from the repository contents'
+inputs:
+  pack-name:
+    description: 'Name of the pack to create'
+    required: true
+  directory:
+    description: 'Directory to include in the pack'
+    required: true
+    default: './*'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Create pack from directory
+      id: zip-pack
+      run: zip ${{ inputs.pack-name }} ${{ inputs.directory }} -r
+      shell: bash
