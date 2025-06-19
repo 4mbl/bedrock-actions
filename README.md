@@ -84,7 +84,6 @@ jobs:
 
       - name: Create pack
         uses: 4mbl/bedrock-actions/bundle-addon@main
-
         with:
           pack-name: ${{ env.PACK_NAME }}
           directory: './*'
