@@ -20,7 +20,7 @@ async function run() {
     const message = `
 ### New development build available!
 
-#${prNumber} | \`[${shortSha}](${commitUrl})\` | ${prettyDate}
+#${prNumber} | [\`${shortSha}\`](${commitUrl}) | ${prettyDate}
 
 **Download build:** ${artifactUrl}
 
