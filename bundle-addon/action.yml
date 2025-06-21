@@ -12,9 +12,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
     - name: Create pack from directory
       id: zip-pack
       run: |
