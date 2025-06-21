@@ -17,5 +17,9 @@ runs:
 
     - name: Create pack from directory
       id: zip-pack
-      run: zip ${{ inputs.pack-name }} ${{ inputs.directory }} -r
+      run: |
+        INITIAL=$(pwd)
+        cd ${{ inputs.directory }}
+        zip -r $INITIAL/${{ inputs.pack-name }} ./*
+        cd $INITIAL
       shell: bash
