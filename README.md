@@ -35,7 +35,7 @@ jobs:
     env:
       PACK_NAME: 'my-pack.mcpack'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Create pack
         uses: 4mbl/bedrock-actions/bundle-addon@main
@@ -80,7 +80,7 @@ jobs:
       PACK_NAME: 'my-pack.mcpack'
     name: Zip and Upload
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Create pack
         uses: 4mbl/bedrock-actions/bundle-addon@main
