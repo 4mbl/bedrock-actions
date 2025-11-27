@@ -38,21 +38,21 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Create pack
-        uses: 4mbl/bedrock-actions/bundle-addon@main
+        uses: 4mbl/bedrock-actions/bundle-addon@v1
         with:
           pack-name: ${{ env.PACK_NAME }}
           directory: './*'
 
       - name: Upload pack as artifact
         id: upload-pack
-        uses: 4mbl/bedrock-actions/upload-pack@main
+        uses: 4mbl/bedrock-actions/upload-pack@v1
         with:
           pack-name: ${{ env.PACK_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment to PR with download link
-        uses: 4mbl/bedrock-actions/pr-comment@main
+        uses: 4mbl/bedrock-actions/pr-comment@v1
         with:
           artifact-url: ${{ steps.upload-pack.outputs.artifact-url }}
           pr-number: ${{ github.event.pull_request.number }}
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Create pack
-        uses: 4mbl/bedrock-actions/bundle-addon@main
+        uses: 4mbl/bedrock-actions/bundle-addon@v1
         with:
           pack-name: ${{ env.PACK_NAME }}
           directory: './*'
