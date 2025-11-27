@@ -13,6 +13,10 @@ outputs:
 runs:
   using: 'composite'
   steps:
+    - name: Deprecation Warning
+      run: echo "This branch (main) is deprecated and will be removed in the future. Please use a versioned branch like v1 instead."
+      shell: bash
+
     - name: Upload Artifact
       id: upload-artifact
       uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

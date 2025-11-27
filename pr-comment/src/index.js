@@ -42,4 +42,7 @@ Happy hacking!
   }
 }
 
+console.warn(
+  'This branch (main) is deprecated and will be removed in the future. Please use a versioned branch like v1 instead.',
+);
 run();

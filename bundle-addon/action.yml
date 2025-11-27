@@ -12,6 +12,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Deprecation Warning
+      run: echo "This branch (main) is deprecated and will be removed in the future. Please use a versioned branch like v1 instead."
+      shell: bash
     - name: Create pack from directory
       id: zip-pack
       run: |
