@@ -6,6 +6,10 @@ updates:
     schedule:
       interval: 'weekly'
   - package-ecosystem: 'github-actions'
-    directory: '/'
+    directories:
+      - '/'
+      - '/bundle-addon'
+      - '/pr-comment'
+      - '/upload-pack'
     schedule:
       interval: 'weekly'
