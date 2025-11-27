@@ -1,3 +1,8 @@
+> [!CAUTION]
+> This branch is deprecated and will be removed in the future.
+>
+> Please use a versioned branch like [v1](https://github.com/4mbl/bedrock-actions/tree/v1) instead.
+
 ## Tips
 
 ## `.github/dependabot.yml`
