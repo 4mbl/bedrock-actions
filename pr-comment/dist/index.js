@@ -31677,6 +31677,9 @@ var __webpack_exports__ = {};
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.warning)(
+    'This v1 action is no longer maintained. See https://github.com/4mbl/bedrock-actions for maintained versions.',
+  );
   try {
     const artifactUrl = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('artifact-url', { required: true });
     const prNumber = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('pr-number', { required: true });

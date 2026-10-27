@@ -1,4 +1,4 @@
-import { getInput, setFailed } from '@actions/core';
+import { getInput, setFailed, warning } from '@actions/core';
 import { getOctokit, context as _context } from '@actions/github';
 
 /**
@@ -6,6 +6,9 @@ import { getOctokit, context as _context } from '@actions/github';
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
+  warning(
+    'This v1 action is no longer maintained. See https://github.com/4mbl/bedrock-actions for maintained versions.',
+  );
   try {
     const artifactUrl = getInput('artifact-url', { required: true });
     const prNumber = getInput('pr-number', { required: true });

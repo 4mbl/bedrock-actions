@@ -12,6 +12,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Warn about unmaintained version
+      shell: bash
+      run: echo '::warning::This v1 action is no longer maintained. See https://github.com/4mbl/bedrock-actions for maintained versions.'
+
     - name: Create pack from directory
       id: zip-pack
       run: |

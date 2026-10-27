@@ -13,6 +13,10 @@ outputs:
 runs:
   using: 'composite'
   steps:
+    - name: Warn about unmaintained version
+      shell: bash
+      run: echo '::warning::This v1 action is no longer maintained. See https://github.com/4mbl/bedrock-actions for maintained versions.'
+
     - name: Upload Artifact
       id: upload-artifact
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
