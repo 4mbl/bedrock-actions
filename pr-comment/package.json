@@ -12,10 +12,10 @@
   },
   "scripts": {
     "bundle": "pnpm run format:write && pnpm run package",
-    "format:write": "pnpx prettier --write .",
-    "format:check": "pnpx prettier --check .",
-    "lint": "pnpx eslint .",
-    "package": "pnpm ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "format:write": "prettier --write src",
+    "format:check": "prettier --check src",
+    "lint": "eslint src",
+    "package": "ncc build src/index.js -o dist --source-map --license licenses.txt",
     "package:watch": "pnpm run package -- --watch",
     "all": "pnpm run format:write && pnpm run lint && pnpm run package"
   },
