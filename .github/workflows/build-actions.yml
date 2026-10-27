@@ -31,6 +31,7 @@ jobs:
         working-directory: ./pr-comment/
 
       - name: Commit and Push Changes to Build
+        if: github.event_name != 'pull_request'
         run: |
           echo "Committing changes to build directory"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
