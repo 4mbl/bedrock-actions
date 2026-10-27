@@ -1,22 +1,34 @@
+# 4mbl/bedrock-actions
+
 ## Tips
+
+- Setup Dependabot or similar tool to automatically update GitHub Actions.
+
+  ```yaml
+  # `.github/dependabot.yml`
+  version: 2
+
+  updates:
+  - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+      interval: 'weekly'
+  ```
+
+- Pin action and workflow versions to specific commit SHAs.
+
+  ```yaml
+   - name: Checkout repository
+       uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+  ```
+
+  You can do this easily with [`pinact`](https://github.com/suzuki-shunsuke/pinact). Just set the specifier to a major version like `actions/checkout@v5`, and execute `pinact run` to pin to the version hash. You can then use dependabot to update the action periodically.
 
 ## Versioning
 
 Each workflow and action has its own version tags. Workflow component prefixes match their filenames. Actions use their directory paths with `/` replaced by `-`. New tags are only created when the related workflow or action is changed
 
 Tags use `<component>/vYY.M.N` format: a two-digit year, an unpadded month, and a release number starting at `0` each month. For example, `upload-pack/v26.10.0` is the first October 2026 release of `upload-pack`.
-
-## `.github/dependabot.yml`
-
-```yaml
-version: 2
-
-updates:
-  - package-ecosystem: 'github-actions'
-    directory: '/'
-    schedule:
-      interval: 'weekly'
-```
 
 ## Examples
 
