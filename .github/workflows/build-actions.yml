@@ -39,7 +39,7 @@ jobs:
 
           if [[ $(git status --porcelain .) ]]; then
           git add .
-          git commit -m "Build actions"
+          git commit -m "build: update bundled actions"
           git push origin main
           else
           echo "No changes, skipping commit."
