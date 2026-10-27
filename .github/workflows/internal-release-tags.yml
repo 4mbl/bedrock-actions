@@ -1,0 +1,32 @@
+# Matches https://github.com/4mbl/actions/blob/main/.github/workflows/internal-release-tags.yml
+name: (Internal) Release tags
+
+on:
+  workflow_run:
+    workflows:
+      - Build Actions and Sync Build Directory
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-tags
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Tag changed components
+        shell: bash
+        run: bash .github/scripts/release-tags.sh
